@@ -12,7 +12,9 @@ Card c(3, 0);	//number card
 Card a(1, 2);	//ace
 Card k (13, 1);	//king
 Card b(14, 12); //invalid card
-Deck d;
+Deck d;			//default deck
+Deck s;			//shuffled deck
+s.shuffle();
 
 //testingoverloaded operators for Card
 TEST(card_op, GoodTests) {
@@ -45,7 +47,13 @@ TEST(DeckGetCard, GoodTests) {
 	EXPECT_EQ(d.get_card(3 * 3 - 1), c);
 }
 
+TEST(DeckShuffle, GoodTests) {
+	EXPECT_NE(d.getcard(0), s.getcard(0));
+}
+
 int main(int argc, char** argv) {
+	if ( argc > 1) srand(stoi(argv[1]));
+	else srand(0);
 	testing::InitGoogleTest(&argc, argv);
 	return RUN_ALL_TESTS();
 	/*

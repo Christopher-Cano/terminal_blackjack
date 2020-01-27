@@ -90,6 +90,10 @@ class Deck{
 		}
 		//accessors
 		Card get_card(int i) { return this->vec.at(i); }
+		//other
+		void shuffle() {
+			random_shuffle (vec.begin(), vec.end());
+		}
 
 };
 
