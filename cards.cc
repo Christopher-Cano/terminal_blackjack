@@ -36,7 +36,7 @@ void f(Card c) {
 }
 
 
-string operator<<(const Card c(0, 0)) {
+string operator<<(const Card c, int i) {
 	string s = to_string(c.get_face()) + ", " + suit[c.get_suit()];
 	return s;
 }
