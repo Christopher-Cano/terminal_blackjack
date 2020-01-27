@@ -12,19 +12,37 @@ Card c(3, 0);	//number card
 Card a(1, 2);	//ace
 Card k (13, 1);	//king
 Card b(14, 12); //invalid card
+Deck d;
 
+//testingoverloaded operators for Card
+TEST(card_op, GoodTests) {
+	EXPECT_EQ()
+}
 //tests related to card suits
 TEST(suit, GoodTests) {
 	EXPECT_EQ(c.get_suit(), "spades");
 }
 
 TEST(suit, BadTests) {
-	EXPECT_EQ(b.get_suit(), "invalid suit (12)\n");
+	EXPECT_EQ(b.get_suit(), "invalid suit (12)");
 }
 
 //tests related to card face
 TEST(face, GoodTests) {
 	EXPECT_EQ(c.get_face(), 3);
+	EXPECT_EQ(a.face_string(), "ace");
+	EXPECT_EQ(k.face_string(), "king");
+}
+
+TEST(face, BadTests) {
+	EXPECT_EQ(b.get_face(), -1);
+}
+
+//tests related to Deck
+TEST(DeckGetCard, GoodTests) {
+	EXPECT_EQ(d.get_card(2), a);
+	EXPECT_EQ(d.get_card(49), k);
+	EXPECT_EQ(d.get_card(3 * 3 - 1), c);
 }
 
 int main(int argc, char** argv) {
