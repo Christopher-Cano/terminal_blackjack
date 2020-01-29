@@ -52,8 +52,8 @@ class Card{
 		string get_suit() { return suit_string(suit); }
 		//this is currently unused
 		int get_suit_int() { return suit; }
-};
 
+};
 //enables cout << Card
 std::ostream& operator<<(std::ostream &outs, Card c) {
 	string s = c.face_string() + " of " + c.get_suit();
@@ -72,35 +72,7 @@ bool operator!=(Card c, Card d) {
 
 //TODO: add deal function
 //TODO: add deck size accessor
-class Deck{
-	private:
-		vector<Card> vec;
-	public:
-		//constructors
-		Deck() {
-			for (int i = 0; i < 13; i++) {
-				for (int j = 0; j < 4; j++) {
-					Card c(i + 1, j);
-					vec.push_back(c);
-				}
-			}
-		}
-		//accessors
-		Card get_card(int i) { return this->vec.at(i); }
-		//mutators
-		Card deal() {
-			Card c = this->vec.back();//deal from the back for speed
-			return c;
-		}
-		int size() { return vec.size(); };
-		void shuffle() {
-			random_shuffle(vec.begin(), vec.end());
-		}
 
-};
 
 //TODO: complete hand class
-class Hand {
-
-};
 

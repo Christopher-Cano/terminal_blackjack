@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <gtest/gtest.h>
 #include "cards.h"
+#include "deck.h"
 
 using namespace std;
 
