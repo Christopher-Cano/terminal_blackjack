@@ -51,21 +51,18 @@ TEST(DeckGetCard, GoodTests) {
 TEST(DeckShuffle, GoodTests) {
 	EXPECT_NE(d.get_card(0), s.get_card(0));
 }
-//enable these when their respective functions have been created
-/*
 TEST(DeckSize, GoodTests) {
 	EXPECT_EQ(d.size(), 52);
 }
 TEST(DeckDeal, GoodTests) {
 	EXPECT_EQ(s.deal(), deal_test);
-	EXPECT_NE(s.get_card, deal_test);
+	EXPECT_NE(s.get_card(0), deal_test);
 
 }
-*/
 
 int main(int argc, char** argv) {
 	s.shuffle();
-	deal_test = s.get_card(12);
+	deal_test = s.get_card(s.size() - 1);
 	if ( argc > 1) srand(stoi(argv[1]));
 	else srand(0);
 	Card z(1, 2);

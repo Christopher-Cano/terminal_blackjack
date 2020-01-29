@@ -87,7 +87,12 @@ class Deck{
 		}
 		//accessors
 		Card get_card(int i) { return this->vec.at(i); }
-		//other
+		//mutators
+		Card deal() {
+			Card c = this->vec.back();//deal from the back for speed
+			return c;
+		}
+		int size() { return vec.size(); };
 		void shuffle() {
 			random_shuffle(vec.begin(), vec.end());
 		}
