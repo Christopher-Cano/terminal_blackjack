@@ -2,7 +2,6 @@
 #include <cmath>
 #include <vector>
 #include <algorithm>
-#include <map>
 #include <gtest/gtest.h>
 #include "cards.h"
 
@@ -12,14 +11,16 @@ Card c(3, 0);	//number card
 Card a(1, 2);	//ace
 Card k (13, 1);	//king
 Card b(14, 12); //invalid card
+Card deal_test(-1, -1);	//used for testing deck.deal()
 Deck d;			//default deck
-Deck s;			//shuffled deck
-s.shuffle();
+Deck s;			//shuffled deck (executed in main)
 
-//testingoverloaded operators for Card
+//TODO: test overloaded operators for Card
+/*
 TEST(card_op, GoodTests) {
 	EXPECT_EQ()
 }
+*/
 //tests related to card suits
 TEST(suit, GoodTests) {
 	EXPECT_EQ(c.get_suit(), "spades");
@@ -48,12 +49,27 @@ TEST(DeckGetCard, GoodTests) {
 }
 
 TEST(DeckShuffle, GoodTests) {
-	EXPECT_NE(d.getcard(0), s.getcard(0));
+	EXPECT_NE(d.get_card(0), s.get_card(0));
 }
+//enable these when their respective functions have been created
+/*
+TEST(DeckSize, GoodTests) {
+	EXPECT_EQ(d.size(), 52);
+}
+TEST(DeckDeal, GoodTests) {
+	EXPECT_EQ(s.deal(), deal_test);
+	EXPECT_NE(s.get_card, deal_test);
+
+}
+*/
 
 int main(int argc, char** argv) {
+	s.shuffle();
+	deal_test = s.get_card(12);
 	if ( argc > 1) srand(stoi(argv[1]));
 	else srand(0);
+	Card z(1, 2);
+	cout << z << endl;
 	testing::InitGoogleTest(&argc, argv);
 	return RUN_ALL_TESTS();
 	/*

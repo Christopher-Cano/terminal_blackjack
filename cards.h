@@ -5,18 +5,6 @@
 #include <map>
 using namespace std;
 
-/*
-string suit_string(int i) {
-	if (i == 0) return "spades";
-	if (i == 1) return "clubs";
-	if (i == 2) return "diamonds";
-	if (i == 3) return "hearts";
-	else {
-		cout << "invalid suit (" << i << ')' << endl;
-		exit(1);
-	}
-}
-*/
 
 class Card{
 	private: 
@@ -47,7 +35,8 @@ class Card{
 			}
 			return face; 
 		}
-	
+		
+		//will be used when displaying card to end user
 		string face_string() {
 			if (face <= 0 || face > 13) {
 				cout << "invalid face (" << face << ')' << endl;
@@ -61,20 +50,28 @@ class Card{
 
 		
 		string get_suit() { return suit_string(suit); }
+		//this is currently unused
+		int get_suit_int() { return suit; }
 };
 
-
+//enables cout << Card
 std::ostream& operator<<(std::ostream &outs, Card c) {
-	string s = to_string(c.get_face()) + ", " + c.get_suit();
+	string s = c.face_string() + " of " + c.get_suit();
 	outs << s;
 	return outs;
 }
-
+//the Card == and != operators are mostly for the tests
 bool operator==(Card c, Card d) {
 	if (c.get_suit() == d.get_suit() && c.get_face() == d.get_face()) return true;
 	return false;
 }
+bool operator!=(Card c, Card d) {
+	if (c.get_suit() == d.get_suit() && c.get_face() == d.get_face()) return false;
+	return true;
+}
 
+//TODO: add deal function
+//TODO: add deck size accessor
 class Deck{
 	private:
 		vector<Card> vec;
@@ -92,8 +89,13 @@ class Deck{
 		Card get_card(int i) { return this->vec.at(i); }
 		//other
 		void shuffle() {
-			random_shuffle (vec.begin(), vec.end());
+			random_shuffle(vec.begin(), vec.end());
 		}
+
+};
+
+//TODO: complete hand class
+class Hand {
 
 };
 
