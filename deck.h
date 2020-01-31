@@ -18,8 +18,8 @@ class Deck{
             Card c = this->vec.back();//deal from the back for speed
             return c;
         }
-        int size() { return vec.size(); };
-        void shuffle() {
+        int size() { return vec.size(); }
+		void shuffle() {
             random_shuffle(vec.begin(), vec.end());
         }
 
@@ -27,7 +27,8 @@ class Deck{
 
 //TODO: complete hand class
 class Hand {
-
+	private: 
+		vector<Card> vec;
 };
 
 //big thing

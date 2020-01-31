@@ -16,6 +16,7 @@ Card deal_test(-1, -1);	//used for testing deck.deal()
 Deck d;			//default deck
 Deck s;			//shuffled deck (executed in main)
 
+int place_bet(
 //TODO: test overloaded operators for Card
 /*
 TEST(card_op, GoodTests) {
@@ -69,7 +70,30 @@ int main(int argc, char** argv) {
 	Card z(1, 2);
 	cout << z << endl;
 	testing::InitGoogleTest(&argc, argv);
-	return RUN_ALL_TESTS();
+	//return RUN_ALL_TESTS();
+	int users = 0;
+	//ask for number of players
+	cout << "ENTER AMOUNT OF PLAYERS(1-6)\n";
+	cin >> users;
+	//vet input
+	if(!cin or users < 1 or users > 6){
+		cout << "BAD INPUT!\n";
+		exit(1);
+	}
+	//start it up
+	cout << "ENTER THE GAME!\n";
+	cout << "==================================================================\n";
+	//make a vector the size of the amount of users numbers 0-total-1
+	vector<int> players;
+	for(int i = 0; i < users; i++){
+		players.push_back(i);
+	}
+	vector<int> bank;
+	for(int i = 0; i < players.size(); i++){
+		bank.push_back(1000);
+	}
+	cout << "PLACE INITIAL BET value from 2-500\n";
+	cout << players.size();
 	/*
 	Deck d;
 	cout << d.get_card(0) << endl;
